@@ -1,0 +1,6 @@
+const http = require('http');
+const data = require('./data')
+http.createServer((req,res)=>{
+    res.write("hi i am dhurv");
+    res.end();
+}).listen(4000);
