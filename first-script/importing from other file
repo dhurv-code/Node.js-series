@@ -1,0 +1,6 @@
+const app= require('./app')
+//main thing is require that help to importing the content...//
+
+
+console.log(app.x+app.y)
+console.log(app.z())
