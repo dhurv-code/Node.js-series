@@ -1,0 +1,27 @@
+# first create public folder
+# create file.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="About html" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+<body>
+    <h1>hi this about</h1>
+</body>
+</html>
+
+# and at last in index.js
+
+
+const express=require('express')
+const path=require('path');
+
+const app= express();
+const publicPath=path.join(__dirname,'public')
+
+app.use(express.static(publicPath))
+
+
+app.listen(5000);
