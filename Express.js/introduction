@@ -1,0 +1,12 @@
+/* here i present a demo of framwork of express.js */
+
+const express=require('express')
+const app= express();
+app.get('',(req,res)=>{
+    res.send("Hello ")
+});
+app.get('/about',(req,res)=>{
+    res.send("Hello  but doing btech instead of my busineess")
+});
+
+app.listen(5000);
