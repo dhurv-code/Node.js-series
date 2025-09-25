@@ -1,0 +1,13 @@
+# Routng with express js also we are send the data to the cleint and taking from the server
+
+const express=require('express')
+const app= express();
+app.get('',(req,res)=>{
+    console.log("data sent by the browser ", req.query.name)
+    res.send("Hello,"+req.query.name);
+});
+app.get('/about',(req,res)=>{
+    res.send("Hello  but doing btech instead of my busineess")
+});
+
+app.listen(5000);
