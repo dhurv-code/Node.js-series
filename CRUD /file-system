@@ -1,0 +1,20 @@
+const fs= require('fs')
+const path= require('path')
+const dirPath=path.join(__dirname,'crud')
+const filepath=`${dirPath}/apple.txt`;
+
+// creating file
+fs.writeFileSync(filepath,"this is the file for an apple");
+
+// reading file
+fs.readFile(filepath,'utf8',(err,item)=>{
+    console.log(item)
+})
+
+// appending file
+fs.appendFile(filepath,'and you must eat it',(err)=>{
+    if(!err) console.log('file is updated');
+})
+
+// delete file
+fs.unlinkSync(`${dirPath}/apple.txt`)
