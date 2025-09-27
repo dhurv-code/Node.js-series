@@ -1,0 +1,30 @@
+const mongoose = require('mongoose');
+const url= "mongodb+srv://username:pswrd@cluster0.m2cunh8.mongodb.net/smartphone?retryWrites=true&w=majority";
+
+
+const ProductSchema=new mongoose.Schema({
+    name:String,
+    price:Number
+})
+
+
+const Product=mongoose.model('products',ProductSchema)
+const updateInDb=async()=>{
+    try{
+
+    await mongoose.connect(url);
+
+    let data=await Product.updateOne(
+        {name:"m8"},
+        {
+            $set:{price:500}
+        }
+    )
+    console.log(data);
+}catch(err){
+    console.log(err);
+    
+}
+    
+
+ }
