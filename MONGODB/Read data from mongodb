@@ -1,0 +1,41 @@
+# In mongodb.js file
+
+const {MongoClient}=require('mongodb');
+const url="mongodb+srv://guptadhurv2005_db_user:learnnode@cluster0.m2cunh8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+const database='smartphone'
+const client=new MongoClient(url);
+
+async function getData(){
+    let result=await client.connect()
+    db=result.db(database)
+    return db.Collection('phones');
+}
+module.exports=getData()
+
+# In index.js file
+const getData=require('./mongodb')
+
+
+
+ # read data from mongodb
+
+ to remove promose method 1
+ getData().then((resp)=>{
+     resp.find().toArray().then((data)=>{
+         console.warn(data);
+     })
+ })
+
+
+
+# // to remvoe promise method 2
+const main=async ()=>{
+    let data= await getData();
+    data=await data.find().toArray();
+    console.warn(data);
+    
+}
+main();
+
+
+
