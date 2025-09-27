@@ -1,0 +1,25 @@
+const express=require('express');
+const getData=require('./mongodb');
+const app = express();
+
+app.use(express.json());
+
+app.put("/",async(req,res)=>{
+    const collection=await getData();
+    const result=await collection.deleteOne({name:req.body.name});
+    res.send({result});
+})
+app.listen(4500);
+
+
+
+
+
+
+
+
+
+
+
+
+
