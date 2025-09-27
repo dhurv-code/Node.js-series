@@ -1,0 +1,15 @@
+const getData=require('./mongodb');
+const insert=async()=>{
+    const collection=await getData();
+
+    const result=await collection.insertOne(
+        {
+            name:'s25',
+            brand:'samsung',
+            model:25,
+            price:320000,
+            category:'mobile'
+        }
+    )    
+}
+insert();
