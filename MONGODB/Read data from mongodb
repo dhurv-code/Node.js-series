@@ -1,7 +1,7 @@
 # In mongodb.js file
 
 const {MongoClient}=require('mongodb');
-const url="mongodb+srv://guptadhurv2005_db_user:learnnode@cluster0.m2cunh8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+const url="mongodb+srv://username:password@cluster0.m2cunh8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 const database='smartphone'
 const client=new MongoClient(url);
 
