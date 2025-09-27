@@ -1,0 +1,17 @@
+const mongoose = require('mongoose');
+const url= "mongodb+srv://username:password@cluster0.m2cunh8.mongodb.net/smartphone?retryWrites=true&w=majority";
+
+ const saveInDB=async()=>{
+    await mongoose.connect(url);
+
+    const ProductSchema=new mongoose.Schema({
+        name:String,price:Number
+    });
+
+    const ProductsModel=mongoose.model('products',ProductSchema)
+    let data=new ProductsModel({name:"m8",price:1500});
+    let result=await data.save();
+    console.log(result);
+    
+ }
+saveInDB
