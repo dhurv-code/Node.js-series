@@ -1,0 +1,36 @@
+const {MongoClient} = require('mongodb');
+const url= "mongodb+srv://username:password@cluster0.m2cunh8.mongodb.net/smartphone?retryWrites=true&w=majority";
+
+async function main(){
+    const broker=new MongoClient(url);
+
+    try{
+        console.log("Sabr kro connect kar rha hu!!!!!!");
+        await broker.connect();
+        console.log("Le bhai kr diya connect!!!!!");
+
+        // chl ab thoda collection dekhte h
+
+        const collection=broker.db("smartphone").collection("phones");
+        console.log("le bahi data nikal liya abhi behjta hu ruk...");
+
+        // chl ab data nikalte h
+
+        const data=await collection.find({}).toArray();
+        console.log( "le bhai data bhi nakal liya");
+
+
+        console.log('data::::',data);
+    }
+    catch(error){
+        console.log("bhai sorry connect ni kr paya database");
+        
+    }
+    finally{
+        console.log("kya tu khush h ab!!??");
+        
+    }
+    
+    
+}
+main();
