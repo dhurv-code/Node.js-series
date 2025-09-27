@@ -1,0 +1,15 @@
+const getData=require('./mongodb');
+const deleteData=async()=>{
+    let data=await getData();
+    let result=await data.deleteOne({
+        name:'ONE+'
+    })
+    if(result.acknowledged){
+        console.log("record deleted");
+        
+    }
+
+    
+    
+} 
+deleteData();
