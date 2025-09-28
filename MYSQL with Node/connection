@@ -1,0 +1,23 @@
+const mysql=require("mysql2");
+const conn=mysql.createConnection({
+    host:'localhost',
+    port:3306,
+    user:"root",
+    password:"dhurv@25Sql",
+    database:"dodo"
+})
+// conn.connect((err)=>{
+//     if(err){
+//         console.warn("error",err);
+        
+//     }
+//     else{
+//         console.warn("connect");
+        
+//     }
+// })
+conn.query("select * from users",(err,result)=>{
+    console.warn("result",result);
+    
+
+})
