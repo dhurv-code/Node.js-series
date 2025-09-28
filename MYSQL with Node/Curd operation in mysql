@@ -1,0 +1,59 @@
+#in config.js
+const mysql=require("mysql2");
+const conn=mysql.createConnection({
+    host:'localhost',
+    port:3306,
+    user:"root",
+    password:"dhurv@25Sql",
+    database:"dodo"
+})
+module.exports=conn
+
+
+
+#in inex.js
+const express = require('express');
+const conn = require('./config');
+
+const app = express();
+
+// GET route/
+app.get("/", (req, res) => {
+    conn.query("SELECT * FROM users", (err, result) => {
+        if (err) {
+            res.send("error");
+        } else {
+            res.send(result);
+        }
+    });
+}); // ✅ CLOSE app.get() properly
+
+// POST route
+app.post("/", (req, res) => {
+    const data = { name: "dodo", password: "1245", user_type: "admin" };
+    conn.query("INSERT INTO users SET ?", data, (error, result, fields) => {
+        if (error) {
+            console.error(error);
+            res.status(500).send("Error inserting user");
+        } else {
+            res.send(result);
+        }
+    });
+});
+
+app.put("/",(req,res)=>{
+    const data=["tony",'0000',"reader",'10']
+    conn.query("UPDATE users SET name= ? , password= ? , user_type= ? where_id=?")
+    if(error) throw error;
+    res.send(results)
+})
+
+// Delete 
+
+app.delete("/:id",(req,res)=>{
+    conn.query("DELETE FROM users WHERE id ="+ req.params.id,(error,result,fiels));
+    if(error) throw error;
+    res.send(results)
+})
+
+app.listen(5000);
